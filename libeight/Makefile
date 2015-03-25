@@ -1,13 +1,16 @@
-all: example.b
+all: example.b libeight.so
 
-example.b: example.o libeight.o
-	gcc -o example.b libeight.o example.o
+example.b: libeight.so example.o
+	gcc -L. -o example.b example.o -leight
 
 example.o: example.c
 	gcc -c example.c
+
+libeight.so: libeight.o
+	gcc -shared -o libeight.so libeight.o
 
 libeight.o: eight.c eight.h
 	gcc -c -o libeight.o eight.c
 
 clean:
-	rm *.o *.b
+	rm *.o *.b *.so
