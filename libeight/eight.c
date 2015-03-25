@@ -34,7 +34,7 @@ char *eight_shake(eight_options *options) {
   if (options->has_additional_response) {
     int num = rand() % 21;
 
-    if (num <= NUM_STANDARD_RESPONSES-1) {
+    if (num < 20) {
       return responses[num];
     } else {
       return options->additional_response;
