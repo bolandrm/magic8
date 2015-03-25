@@ -46,3 +46,8 @@ char *eight_shake(eight_options *options) {
   }
 }
 
+char *eight_quick_shake() {
+  int num = rand() % 20;
+  return responses[num];
+}
+

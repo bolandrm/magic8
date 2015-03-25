@@ -6,4 +6,5 @@ typedef struct {
 } eight_options;
 
 void eight_setup();
+char *eight_quick_shake();
 char *eight_shake(eight_options *options);
