@@ -27,27 +27,27 @@ static char *responses[] = {
 };
 
 void eight_setup() {
-  srand(time(0));
+  srand(time(NULL));
 }
 
 char *eight_shake(eight_options *options) {
   if (options->has_additional_response) {
-    int num = rand() % 21;
+    int num = rand() % (NUM_STANDARD_RESPONSES + 1);
 
-    if (num < 20) {
+    if (num < NUM_STANDARD_RESPONSES) {
       return responses[num];
     } else {
       return options->additional_response;
     }
 
   } else {
-    int num = rand() % 20;
+    int num = rand() % NUM_STANDARD_RESPONSES;
     return responses[num];
   }
 }
 
 char *eight_quick_shake() {
-  int num = rand() % 20;
+  int num = rand() % NUM_STANDARD_RESPONSES;
   return responses[num];
 }
 

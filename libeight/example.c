@@ -6,7 +6,6 @@ int main() {
   eight_setup();
 
 
-
   printf("Testing without additional option: \n");
 
   eight_options opts;

@@ -6,8 +6,6 @@ module Magic8
 
   attach_function :eight_setup, [], :void
   attach_function :eight_quick_shake, [], :string
-
-  #Options < FFI::Struct
 end
 
 Magic8.eight_setup
