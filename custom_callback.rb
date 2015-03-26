@@ -25,7 +25,11 @@ options[:has_additional_response] = 0
 
 options[:has_callback_response] = 1
 options[:callback_response] = Proc.new do
-  FFI::MemoryPointer.from_string("some string")
+  if Time.now.hour < 12
+    FFI::MemoryPointer.from_string("No coffee yet - Ask again later")
+  else
+    FFI::MemoryPointer.from_string("Too tired - Ask again later.")
+  end
 end
 
 output = [*0..50].map do
