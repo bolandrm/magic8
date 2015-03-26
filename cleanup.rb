@@ -13,12 +13,12 @@ module Magic8
            :callback_response, :custom_callback_response
   end
 
-  attach_function :eight_setup, [], :void
-  attach_function :eight_quick_shake, [], :string
-  attach_function :eight_shake, [Options.ptr], :string
+  attach_function :setup, :eight_setup, [], :void
+  attach_function :quick_shake, :eight_quick_shake, [], :string
+  attach_function :shake, :eight_shake, [Options.ptr], :string
 end
 
-Magic8.eight_setup
+Magic8.setup
 
 options = Magic8::Options.new
 options[:has_additional_response] = 0
@@ -35,7 +35,7 @@ options[:callback_response] = Proc.new do
 end
 
 output = [*0..50].map do
-  "'#{Magic8.eight_shake(options)}'"
+  "'#{Magic8.shake(options)}'"
 end.uniq.join(", ")
 
 puts output
