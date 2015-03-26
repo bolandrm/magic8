@@ -1,6 +1,7 @@
 #include "eight.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
 static char *responses[] = {
@@ -38,6 +39,15 @@ char *eight_shake(eight_options *options) {
       return responses[num];
     } else {
       return options->additional_response;
+    }
+
+  } else if (options->has_callback_response) {
+    int num = rand() % (NUM_STANDARD_RESPONSES + 1);
+
+    if (num < NUM_STANDARD_RESPONSES) {
+      return responses[num];
+    } else {
+      return options->callback_response();
     }
 
   } else {
